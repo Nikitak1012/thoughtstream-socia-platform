@@ -1,0 +1,320 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body{
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    background: linear-gradient(135deg, #fdf2f8, #eef2ff);
+    color: #1f2937;
+    overflow-x: hidden;
+}
+/* NAVBAR */
+.navbar{
+    width: 82%;
+    margin: 25px auto;
+    padding: 24px 30px;
+    background: linear-gradient(135deg, #7c3aed, #ec4899);
+    border-radius: 24px;
+    box-shadow: 0 12px 30px rgba(124,58,237,0.25);
+}
+
+.nav-top{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.nav-top h1{
+    color: white;
+    font-size: 34px;
+}
+
+.logout-btn{
+    border: none;
+    background: white;
+    color: #ec4899;
+    padding: 12px 20px;
+    border-radius: 14px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.nav-bottom{
+    display: flex;
+    gap: 14px;
+    align-items: center;
+}
+
+.search-form{
+    flex: 1;
+    display: flex;
+    gap: 10px;
+}
+
+.search-form input{
+    flex: 1;
+    padding: 14px 18px;
+    border-radius: 18px;
+    border: none;
+    outline: none;
+}
+
+.search-form button,
+.clear-search,
+.create-btn{
+    border: none;
+    padding: 13px 20px;
+    border-radius: 16px;
+    font-weight: bold;
+    cursor: pointer;
+    text-decoration: none;
+    white-space: nowrap;
+}
+.search-input-wrapper{
+    position: relative;
+    flex: 1;
+}
+
+.search-input-wrapper input{
+    width: 100%;
+    padding: 14px 45px 14px 18px;
+    border-radius: 18px;
+    border: none;
+    outline: none;
+    font-size: 15px;
+}
+
+.clear-icon{
+    position: absolute;
+    right: 16px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: #6b7280;
+    font-size: 18px;
+    cursor: pointer;
+    display: none;
+    user-select: none;
+}
+
+.clear-icon:hover{
+    color: #111827;
+}
+
+.search-form button{
+    background: rgba(255,255,255,0.25);
+    color: white;
+}
+
+
+
+.create-btn{
+    background: white;
+    color: #7c3aed;
+}
+
+/* POSTS */
+.posts-container{
+    width: 100%;
+}
+
+.post{
+    width: 78%;
+    max-width: 1050px;
+    margin: 28px auto;
+    padding: 26px;
+    display: flex;
+    gap: 18px;
+    background: rgba(255,255,255,0.95);
+    border-radius: 22px;
+    box-shadow: 0 10px 28px rgba(0,0,0,0.08);
+    cursor: pointer;
+    transition: 0.3s ease;
+}
+
+.post:hover{
+    transform: translateY(-4px);
+    box-shadow: 0 16px 35px rgba(124,58,237,0.15);
+}
+
+.post-left img{
+    width: 72px;
+    height: 72px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 3px solid #ec4899;
+}
+
+.post-right{
+    flex: 1;
+    min-width: 0;
+}
+
+.username{
+    margin-bottom: 5px;
+    color: #7c3aed;
+    font-size: 21px;
+    font-weight: 700;
+}
+
+.username-link{
+    color: #7c3aed;
+    text-decoration: none;
+}
+
+.username-link:hover{
+    text-decoration: underline;
+}
+
+.post-time{
+    font-size: 13px;
+    color: #6b7280;
+    margin-bottom: 12px;
+}
+
+.content{
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    color: #374151;
+    font-size: 16px;
+    line-height: 1.8;
+    font-weight: 500;
+    letter-spacing: 0.1px;
+    white-space: pre-line;
+
+}
+
+/* FIXED IMAGE SIZE FOR LAPTOP */
+.post-upload-img{
+    width: 100%;
+    max-width: 520px;
+    max-height: 360px;
+    object-fit: cover;
+    border-radius: 18px;
+    margin-top: 16px;
+    border: 1px solid #e5e7eb;
+    box-shadow: 0 6px 16px rgba(0,0,0,0.10);
+    display: block;
+}
+
+/* ACTION BUTTONS */
+.post-actions{
+    display: flex;
+    gap: 12px;
+    flex-wrap: wrap;
+    margin-top: 22px;
+}
+
+.post-actions form,
+.post-actions a{
+    margin: 0;
+    text-decoration: none;
+}
+
+.post-actions button{
+    border: none;
+    padding: 10px 17px;
+    border-radius: 13px;
+    font-size: 14px;
+    font-weight: 700;
+    cursor: pointer;
+    transition: 0.2s;
+}
+
+.post-actions button:hover{
+    transform: translateY(-2px);
+}
+
+.like-btn{
+    background: #ffe4e6;
+    color: #e11d48;
+}
+
+.comment-btn{
+    background: #ede9fe;
+    color: #6d28d9;
+}
+
+.save-btn{
+    background: #fef3c7;
+    color: #b45309;
+}
+
+.share-btn{
+    background: #dcfce7;
+    color: #15803d;
+}
+
+.no-posts{
+    text-align: center;
+    color: #6b7280;
+    font-size: 18px;
+    margin-top: 40px;
+    font-weight: 600;
+}
+
+/* RESPONSIVE */
+@media(max-width: 900px){
+    .navbar,
+    .post{
+        width: 92%;
+    }
+
+    .post-upload-img{
+        max-width: 100%;
+    }
+}
+
+@media(max-width: 600px){
+    .navbar{
+        width: 94%;
+        padding: 18px;
+        margin: 16px auto;
+    }
+
+    .nav-top h1{
+        font-size: 24px;
+    }
+
+    .nav-bottom{
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .search-form{
+        flex-direction: column;
+    }
+
+    .search-form input,
+    .search-form button,
+    .clear-search,
+    .create-btn{
+        width: 100%;
+        text-align: center;
+    }
+
+    .post{
+        width: 94%;
+        flex-direction: column;
+        padding: 18px;
+    }
+
+    .post-left img{
+        width: 65px;
+        height: 65px;
+    }
+
+    .username{
+        font-size: 18px;
+    }
+
+    .content{
+        font-size: 15px;
+    }
+
+    .post-actions button{
+        padding: 9px 12px;
+        font-size: 12px;
+    }
+}

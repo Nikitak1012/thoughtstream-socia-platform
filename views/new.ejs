@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Creat new post</title>
+    
+<link rel="stylesheet" href="/newPost.css">
+</head>
+<body>
+    <div class="create-post-container">
+        <h1>Create New Post</h1>
+    <form  class="post-form" method="post" action="/posts" enctype="multipart/form-data">
+        <!-- <input type="text" placeholder="Enter username" name="username" required> -->
+        <textarea placeholder="What's on your mind?" name="content" rows="5" required></textarea>
+        <input type="file" placeholder="Upload post image optional" name="image" accept="image/*" >
+        <button type="submit">Submit Post</button>
+    </form>
+    </div>
+
+    
+</body>
+</html>

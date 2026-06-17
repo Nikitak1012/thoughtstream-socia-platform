@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Post in Detail</title>
+    <link rel="stylesheet" href="/show.css">
+</head>
+<body>
+    <div class="detail-container">
+        <div class="detail-card">
+    <h1>Post Details</h1>
+
+    <div class="detail-user">
+    <img 
+        src="<%= post.owner && post.owner.profileImage ? post.owner.profileImage : '/images/default_img.jpg' %>" 
+        alt="profile"
+    >
+
+    <div>
+        <h2 class="username">
+            @<%= post.owner ? post.owner.username : post.username %>
+        </h2>
+
+        <p class="detail-id">Post ID : <%= post.id %></p>
+
+        <p class="detail-id">
+            Posted <%= timeAgo(post.createdAt) %>
+        </p>
+    </div>
+</div>
+
+<div class="detail-content">
+
+    <p><%= post.content %></p>
+
+    <% if(post.postImage){ %>
+        <img src="<%= post.postImage %>" class="detail-post-img" alt="post image">
+    <% } %>
+
+</div>
+    <div class="detail-btns">
+
+    <a href="/posts" class="back-btn">Back</a>
+
+    <% if (post.owner && currentUser && String(post.owner._id) === String(currentUser._id)) { %>
+
+        <a href="/posts/<%= post.id %>/edit" class="edit-detail-btn">Edit</a>
+
+        <form method="POST" action="/posts/<%= post.id %>?_method=DELETE">
+            <button class="delete-detail-btn">Delete Post</button>
+        </form>
+
+    <% } %>
+
+</div>
+
+    
+    
+</div>
+
+    </div>
+</body>
+</html>

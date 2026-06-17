@@ -1,0 +1,71 @@
+body{
+    margin: 0;
+    min-height: 100vh;
+    font-family: "Segoe UI", Arial, sans-serif;
+    background: linear-gradient(135deg, #fdf2f8, #eef2ff);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.auth-card{
+    width: 420px;
+    background: white;
+    padding: 38px;
+    border-radius: 24px;
+    box-shadow: 0 12px 35px rgba(124,58,237,0.16);
+}
+
+.auth-card h1{
+    text-align: center;
+    color: #7c3aed;
+    margin-bottom: 28px;
+}
+
+.auth-card form{
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+}
+
+.auth-card input{
+    padding: 15px;
+    border-radius: 14px;
+    border: 2px solid #e9d5ff;
+    outline: none;
+    font-size: 15px;
+}
+
+.auth-card input:focus{
+    border-color: #7c3aed;
+    box-shadow: 0 0 0 4px rgba(124,58,237,0.10);
+}
+
+.auth-card button{
+    padding: 15px;
+    border: none;
+    border-radius: 14px;
+    color: white;
+    font-weight: bold;
+    cursor: pointer;
+    background: linear-gradient(135deg, #7c3aed, #ec4899);
+}
+
+.auth-card p{
+    text-align: center;
+    margin-top: 20px;
+}
+
+.auth-card a{
+    color: #7c3aed;
+    font-weight: bold;
+}
+.error-msg{
+    background-color: #fee2e2;
+    color: #dc2626;
+    padding: 12px;
+    border-radius: 10px;
+    text-align: center;
+    font-weight: bold;
+    margin-bottom: 15px;
+}

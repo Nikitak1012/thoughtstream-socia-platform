@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Follow Requests</title>
+    <link rel="stylesheet" href="/profile.css">
+</head>
+<body>
+
+<div class="profile-container">
+
+    <a href="/users/<%= user._id %>" class="back-btn">← Back</a>
+
+    <h2 class="section-title">Follow Requests</h2>
+
+    <% if(requests.length === 0){ %>
+        <p class="no-posts">No follow requests.</p>
+    <% } %>
+
+    <% requests.forEach((requestUser) => { %>
+
+        <div class="request-card-large">
+
+            <a href="/users/<%= requestUser._id %>" class="request-user-info">
+
+                <img 
+                    src="<%= requestUser.profileImage || '/images/default-user.png' %>" 
+                    alt="profile"
+                >
+
+                <h3>@<%= requestUser.username %></h3>
+
+            </a>
+
+            <div class="request-actions">
+
+                <form action="/users/<%= user._id %>/accept-request/<%= requestUser._id %>" method="POST">
+                    <button class="accept-btn">Accept</button>
+                </form>
+
+                <form action="/users/<%= user._id %>/reject-request/<%= requestUser._id %>" method="POST">
+                    <button class="reject-btn">Reject</button>
+                </form>
+
+            </div>
+
+        </div>
+
+    <% }) %>
+
+</div>
+
+</body>
+</html>

@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title><%= title %></title>
+    <link rel="stylesheet" href="/profile.css">
+</head>
+<body>
+
+<div class="profile-container">
+
+    <a href="/users/<%= profileUser._id %>" class="back-btn">← Back</a>
+
+    <h2 class="section-title">
+        <%= title %> of @<%= profileUser.username %>
+    </h2>
+
+    <% if(users.length === 0){ %>
+        <p class="no-posts">No users found.</p>
+    <% } %>
+
+    <% users.forEach((user) => { %>
+        <a href="/users/<%= user._id %>" class="user-list-card">
+            <img src="<%= user.profileImage || '/images/default-user.png' %>" alt="profile">
+            <h3>@<%= user.username %></h3>
+        </a>
+    <% }) %>
+
+</div>
+
+</body>
+</html>

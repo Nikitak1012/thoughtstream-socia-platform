@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>All Posts</title>
+    <link rel="stylesheet" href="/index.css">
+</head>
+<body>
+
+<header class="navbar">
+
+    <div class="nav-top">
+        <h1>ThoughtStream</h1>
+
+        <form action="/logout" method="POST">
+            <button class="logout-btn">Logout</button>
+        </form>
+    </div>
+
+    <div class="nav-bottom">
+
+        <form action="/posts" method="GET" class="search-form">
+            <div class="search-input-wrapper">
+
+    <input
+        type="text"
+        id="searchInput"
+        name="q"
+        placeholder="Search posts..."
+        value="<%= searchQuery || '' %>"
+    >
+
+    <span
+        id="clearSearch"
+        class="clear-icon"
+        onclick="clearSearchField()"
+    >
+        <bold>✕</bold>
+    </span>
+
+</div>
+
+            <button type="submit">Search</button>
+
+            
+        </form>
+
+        <a href="/posts/new" class="create-btn">+ Create Post</a>
+
+    </div>
+
+</header>
+
+<div class="posts-container">
+    <% if(posts.length === 0){ %>
+    <p class="no-posts">No matching posts found.</p>
+<% } %>
+
+    <% for(let post of posts){ %>
+
+        <div class="post" onclick="window.location.href='/posts/<%= post.id %>'">
+
+            <div class="post-left">
+                <img 
+    src="<%= post.owner && post.owner.profileImage ? post.owner.profileImage : '/images/default_img.jpg' %>" 
+    alt="user"
+>
+            </div>
+
+            <div class="post-right">
+
+                <h3 class="username" onclick="event.stopPropagation()">
+    <% if(post.owner){ %>
+        <a href="/users/<%= post.owner._id %>" class="username-link">
+            @<%= post.owner.username %>
+        </a>
+    <% } else { %>
+        @<%= post.username || "unknown" %>
+    <% } %>
+</h3>
+<p class="post-time"><%= timeAgo(post.createdAt) %></p>
+
+                <p class="content"><%= post.content %></p>
+                <% if(post.postImage){ %>
+    <img src="<%= post.postImage %>" class="post-upload-img" alt="post image">
+<% } %>
+
+                <div class="post-actions">
+
+                    <form action="/posts/<%= post.id %>/like" method="POST" onclick="event.stopPropagation()">
+                        <button class="like-btn">❤️ Like <%= post.likes %></button>
+                    </form>
+
+                    <a href="/posts/<%= post.id %>/comments" onclick="event.stopPropagation()">
+                        <button class="comment-btn">💬 Comment</button>
+                    </a>
+
+                    <form action="/posts/<%= post.id %>/save" method="POST" onclick="event.stopPropagation()">
+                        <button class="save-btn">
+                            <% if(post.saved){ %>
+                                🔖 Saved
+                            <% } else { %>
+                                🔖 Save
+                            <% } %>
+                        </button>
+                    </form>
+
+                    <button 
+                        class="share-btn"
+                        onclick="event.stopPropagation(); sharePost('<%= post.id %>')"
+                    >
+                        🔗 Share
+                    </button>
+
+                </div>
+
+                
+
+            </div>
+
+        </div>
+
+    <% } %>
+
+</div>
+
+<script>
+    const searchInput = document.getElementById("searchInput");
+const clearBtn = document.getElementById("clearSearch");
+
+function toggleClearButton(){
+    if(searchInput.value.trim() !== ""){
+        clearBtn.style.display = "block";
+    }else{
+        clearBtn.style.display = "none";
+    }
+}
+
+function clearSearchField(){
+    searchInput.value = "";
+    clearBtn.style.display = "none";
+
+    window.location.href = "/posts";
+}
+
+searchInput.addEventListener("input", toggleClearButton);
+
+toggleClearButton();
+function sharePost(postId){
+    let postLink = `${window.location.origin}/posts/${postId}`;
+
+    navigator.clipboard.writeText(postLink)
+    .then(() => {
+        alert(`Link copied successfully!\n\n${postLink}`);
+    })
+    .catch(() => {
+        prompt("Copy this link manually:", postLink);
+    });
+}
+</script>
+
+</body>
+</html>

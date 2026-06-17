@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title><%= profileUser.username %> Profile</title>
+    <link rel="stylesheet" href="/profile.css">
+</head>
+<body>
+
+<div class="profile-container">
+
+    <a href="/posts" class="back-btn">← Back</a>
+
+    <div class="profile-card">
+
+    <div class="cover-banner"></div>
+
+    <div class="profile-main">
+        <img 
+            src="<%= profileUser.profileImage || '/images/default_img.jpg' %>" 
+            class="profile-img"
+            alt="profile"
+        >
+
+        <div class="profile-info">
+            <h1>@<%= profileUser.username %></h1>
+            <p class="bio"><%= profileUser.bio %></p>
+        </div>
+
+        <% if(currentUser && String(currentUser._id) === String(profileUser._id)) { %>
+    <a href="/profile/edit" class="edit-profile-btn">Edit</a>
+<% } %>
+
+<% if(String(currentUser._id) !== String(profileUser._id)) { %>
+    <form action="/users/<%= profileUser._id %>/follow-request" method="POST">
+        <button class="follow-btn">Follow</button>
+    </form>
+<% } %>
+    </div>
+
+    <div class="profile-stats">
+
+    <div>
+        <strong><%= userPosts.length %></strong>
+        <span>Posts</span>
+    </div>
+
+    <a href="/users/<%= profileUser._id %>/followers" class="stat-link">
+        <strong><%= profileUser.followers.length %></strong>
+        <span>Followers</span>
+    </a>
+
+    <a href="/users/<%= profileUser._id %>/following" class="stat-link">
+        <strong><%= profileUser.following.length %></strong>
+        <span>Following</span>
+    </a>
+
+</div>
+
+</div>
+<% if(String(currentUser._id) === String(profileUser._id) && profileUser.followRequests.length > 0) { %>
+
+    <a href="/profile/requests" class="request-notification-btn">
+        🔔 Follow Requests 
+        <span><%= profileUser.followRequests.length %></span>
+    </a>
+
+<% } %>
+
+    <h2 class="section-title">All Posts</h2>
+
+    <% if(userPosts.length === 0){ %>
+        <p class="no-posts">No posts yet.</p>
+    <% } %>
+
+    <% for(let post of userPosts){ %>
+
+        <div class="profile-post" onclick="window.location.href='/posts/<%= post.id %>'">
+
+            <div class="post-header">
+                <img 
+    src="<%= profileUser.profileImage || '/images/default_img.jpg' %>" 
+    alt="profile"
+>
+
+                <div>
+                    <h3>@<%= profileUser.username %></h3>
+                    <p><%= timeAgo(post.createdAt) %></p>
+                </div>
+            </div>
+
+            <p class="post-content"><%= post.content %></p>
+
+        </div>
+
+    <% } %>
+
+</div>
+
+</body>
+</html>

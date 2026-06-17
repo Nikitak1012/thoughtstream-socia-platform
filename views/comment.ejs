@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Comments</title>
+    <link rel="stylesheet" href="/comment.css">
+</head>
+<body>
+
+    
+
+    <div class="comments-page">
+
+        <div class="post-preview">
+
+    <div class="post-user-row">
+        <img 
+            src="<%= post.owner && post.owner.profileImage ? post.owner.profileImage : '/images/default_img.jpg' %>" 
+            class="profile-img"
+            alt="profile"
+        >
+
+        <div>
+            <h2>@<%= post.owner ? post.owner.username : post.username %></h2>
+            <p class="post-time"><%= timeAgo(post.createdAt) %></p>
+        </div>
+    </div>
+
+    <p class="post-content"><%= post.content %></p>
+
+    <% if(post.postImage){ %>
+        <img 
+            src="<%= post.postImage %>" 
+            class="comment-post-img" 
+            alt="post image"
+        >
+    <% } %>
+
+</div>
+
+        <h1>Comments 💬</h1>
+
+        <div class="comment-list">
+
+            <% if(post.comments && post.comments.length > 0){ %>
+
+                <% post.comments.forEach((c) => { %>
+
+                    <div class="comment-card">
+                        <div class="comment-avatar">
+                            <%= c.username[0].toUpperCase() %>
+                        </div>
+
+                        <div>
+                            <h3>@<%= c.username %></h3>
+                            <p><%= c.text %></p>
+                             <p class="comment-time"><%= timeAgo(c.createdAt) %></p>
+                        </div>
+                    </div>
+
+                <% }) %>
+
+            <% } else { %>
+
+                <p class="no-comments">No comments yet. Be the first to comment.</p>
+
+            <% } %>
+
+        </div>
+
+        <form action="/posts/<%= post.id %>/comments" method="POST" class="comment-form">
+
+            
+
+            <textarea 
+                name="comment" 
+                placeholder="Write your comment..." 
+                
+            ></textarea>
+
+            <button type="submit">Post Comment</button>
+
+        </form>
+        <div class="comment-page-actions">
+    <a href="/posts" class="back-btn">← Back</a>
+</div>
+
+    </div>
+
+
+    
+
+</body>
+</html>

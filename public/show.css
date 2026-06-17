@@ -1,0 +1,133 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body{
+    font-family: "Segoe UI", Arial, sans-serif;
+    background: linear-gradient(135deg, #fdf2f8, #eef2ff);
+    color: #1f2937;
+}
+
+.detail-container{
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    padding: 45px 20px;
+}
+
+.detail-card{
+    width: 760px;
+    background: white;
+    padding: 35px;
+    border-radius: 24px;
+    box-shadow: 0 12px 30px rgba(124,58,237,0.15);
+}
+
+.detail-card h1{
+    text-align: center;
+    color: #7c3aed;
+    margin-bottom: 30px;
+}
+
+.detail-user{
+    display: flex;
+    align-items: center;
+    gap: 18px;
+    margin-bottom: 25px;
+}
+
+.detail-user img{
+    width: 82px;
+    height: 82px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 4px solid #ec4899;
+}
+
+.username{
+    color: #7c3aed;
+    margin-bottom: 6px;
+}
+
+.detail-id{
+    color: #6b7280;
+    font-size: 14px;
+}
+
+.detail-content{
+    background: #f9fafb;
+    padding: 22px;
+    border-radius: 18px;
+    border-left: 5px solid #7c3aed;
+    margin-bottom: 25px;
+}
+
+.detail-content p{
+    color: #374151;
+    font-size: 18px;
+    line-height: 1.7;
+}
+
+.detail-post-img{
+    width: 100%;
+    max-height: 520px;
+    object-fit: contain;
+    border-radius: 18px;
+    margin-top: 20px;
+    border: 1px solid #e5e7eb;
+    box-shadow: 0 6px 16px rgba(0,0,0,0.12);
+    background: #fff;
+}
+
+.detail-btns{
+    display: flex;
+    gap: 14px;
+    flex-wrap: wrap;
+}
+
+.detail-btns a,
+.delete-detail-btn{
+    text-decoration: none;
+    color: white;
+    padding: 11px 20px;
+    border-radius: 12px;
+    font-weight: bold;
+    border: none;
+    cursor: pointer;
+}
+
+.back-btn{
+    background: linear-gradient(135deg, #6366f1, #7c3aed);
+}
+
+.edit-detail-btn{
+    background: linear-gradient(135deg, #10b981, #059669);
+}
+
+.delete-detail-btn{
+    background: linear-gradient(135deg, #f43f5e, #e11d48);
+}
+
+.detail-btns a:hover,
+.delete-detail-btn:hover{
+    transform: translateY(-2px);
+}
+
+@media(max-width: 700px){
+    .detail-card{
+        width: 94%;
+        padding: 24px;
+    }
+
+    .detail-user{
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .detail-content p{
+        font-size: 16px;
+    }
+}
