@@ -26,7 +26,7 @@ ThoughtStream is a modern social networking web application that enables users t
 <!-- Add Home Page Screenshot Here -->
 
 ```md
-![Home Page](images/home-page.png)
+![assets/home_page.png]
 ```
 
 ---
@@ -36,7 +36,7 @@ ThoughtStream is a modern social networking web application that enables users t
 <!-- Add Profile Screenshot Here -->
 
 ```md
-![Profile Page](images/profile-page.png)
+![assets/Profile-page.png]
 ```
 
 ---
@@ -46,17 +46,17 @@ ThoughtStream is a modern social networking web application that enables users t
 <!-- Add Create Post Screenshot Here -->
 
 ```md
-![Create Post](images/create-post.png)
+![assets/Create_post.png]
 ```
 
 ---
 
-### 🔔 Follow Requests
+### 🔔 Post Detail
 
 <!-- Add Follow Requests Screenshot Here -->
 
 ```md
-![Follow Requests](images/follow-request.png)
+![assets/Post_detail.png]
 ```
 
 ---
